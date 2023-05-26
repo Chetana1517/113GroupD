@@ -10,6 +10,7 @@ import com.jdbc.util.DBUtil;
 
 public class DatabaseOperation {
 	//student registration form
+	//Student databse 
 	public void registerStudent() {
 		Connection con = null;
 		PreparedStatement pstmt = null;
