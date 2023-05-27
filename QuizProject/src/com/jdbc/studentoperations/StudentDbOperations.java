@@ -8,8 +8,10 @@ import java.util.Scanner;
 
 import com.jdbc.studentclass.Student;
 import com.jdbc.util.DBUtil;
+import com.mysql.cj.protocol.x.SyncFlushDeflaterOutputStream;
 
 public class StudentDbOperations {
+	Scanner sc;
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	//Method to register the student
@@ -19,7 +21,7 @@ public class StudentDbOperations {
 			con = DBUtil.getCon();
 			String query = "insert into student(fname,lname,username,passwd,emailId,mobileNo)values(?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(query);
-			Scanner sc = new Scanner(System.in);
+			sc = new Scanner(System.in);
 
 			System.out.println("Enter your firstname:");
 			String firstname = sc.next();
@@ -78,6 +80,16 @@ public class StudentDbOperations {
 
 			while (result.next()) {
 				System.out.println("1)" + result.getString(1));
+				System.out.println(result.getString(2));
+				System.out.println(result.getString(3));
+				System.out.println(result.getString(4));
+				System.out.println(result.getString(5));
+				
+				System.out.println("Enter Your answer>>");
+				sc=new Scanner(System.in);
+				String answer=sc.next();
+				
+				String ansQuery="insert into answer (submited)"
 			}
 
 		} catch (SQLException e) {
