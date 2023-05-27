@@ -10,8 +10,13 @@ public class Student {
 	private Long mobileNo;
 	
 	Student(){
-		
+	
 	}
+	public Student (String username,String password) {
+		this.username=username;
+		this.password=password;
+	}
+	
 	public Student(String fname,String lname,String username,String password,String emailId,Long mobileNo){
 		this.fname=fname;
 		this.lname=lname;

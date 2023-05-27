@@ -66,6 +66,57 @@ public class StudentDbOperations {
 			}
 		}
 	}
+	
+	public void studentLogin() {
+		
+		try {
+			con = DBUtil.getCon();
+			//query to add student login details 
+			String query = "select passwd from student where username=?";
+			pstmt = con.prepareStatement(query);
+			
+			Scanner scan = new Scanner(System.in);
+			System.out.println("Enter username:");
+			String usname = scan.next();
+			System.out.println("Enter password:");
+			String passwrd = scan.next();
+			
+			Student s1 = new Student(usname,passwrd);
+			
+			pstmt.setString(1, s1.getUsername());
+			pstmt.setString(2, s1.getPassword());
+			
+			ResultSet result = pstmt.executeQuery();
+			String pass = "";
+			while (result.next()) {
+				pass = result.getString(1);
+			}
+			
+			if(passwrd.equals(pass)) {
+				
+				System.out.println("Login successfully done ");
+			}
+			else {
+				System.out.println("You are not registered");
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if (con != null || pstmt != null) {
+					con.close();
+					pstmt.close();
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+	}
 
 	// Methos to start the quiz....
 	public void startQuiz() {
