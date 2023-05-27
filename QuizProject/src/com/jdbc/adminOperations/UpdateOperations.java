@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
+import com.jdbc.util.DBUtil;
 
 public class UpdateOperations {
 
@@ -15,25 +16,22 @@ public class UpdateOperations {
 			con = DBUtil.getCon();
 			String query = "update Question set Marks=?, QuestionDescription=? where QueId=?";
 			pstmt = con.prepareStatement(query);
-			Scanner sc=new Scanner(System.in);
+			Scanner sc = new Scanner(System.in);
 			System.out.println("Enter the count of records to you want to update:");
-			int noOfRecords=sc.nextInt();
-			if(noOfRecords>0) {
-				for(int j=0;j<noOfRecords;j++) {
-					
+			int noOfRecords = sc.nextInt();
+			if (noOfRecords > 0) {
+				for (int j = 0; j < noOfRecords; j++) {
+
 					pstmt.setInt(1, 0);
 					pstmt.setInt(2, 1);
 					pstmt.setInt(3, 2);
 
-						
-					i=pstmt.executeUpdate();
+					i = pstmt.executeUpdate();
 				}
-				System.out.println(i+" record updated sucessfully...");
-			}
-			else{
+				System.out.println(i + " record updated sucessfully...");
+			} else {
 				System.out.println("Enter the positive number");
 			}
-			
 
 		} catch (SQLException e) {
 			e.printStackTrace();

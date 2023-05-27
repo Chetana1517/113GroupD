@@ -1,13 +1,13 @@
 package com.jdbs.main;
 
 import java.util.Scanner;
-
-import com.jdbc.operations.DatabaseOperation;
-
+import com.jdbc.studentoperations.DatabaseOperation;
+import com.jdbc.adminOperations.InsertQuestion;
 public class MainClass {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int input;
+		int cont;
 		int choice;
 		int choiceOfStudent;
 		int choiceOfAdmin;
@@ -70,7 +70,9 @@ public class MainClass {
 					
 						switch(choiceOfAdmin) {
 							case 1:
-								System.out.println("1.Add Questions");
+								System.out.println("Add Questions");
+								InsertQuestion insertQ=new InsertQuestion();
+								insertQ.addQuestion();
 								break;
 							case 2:
 								System.out.println("2.Update Questions");
@@ -94,22 +96,22 @@ public class MainClass {
 						}
 						//--------------------------------------------
 						System.out.println("Do you want to continue?(1->continue/0->stop):");
-						input = sc.nextInt();
-						if (input == 0) {
+						cont = sc.nextInt();
+						if (cont == 0) {
 							break;
 						} 
-						else if (input > 1) {
+						else if (cont > 1) {
 							System.out.println("Invalid input");
 
-							while (input!=1) {
+							while (cont!=1) {
 								System.out.println("Please Enter 1 to continue or 0 to stop:");
 								input = sc.nextInt();
-								if (input == 0) {
+								if (cont == 0) {
 									break;
 								}
 							}
 						}
-					}while(input==1);
+					}while(cont==1);
 					break;
 			default:
 					System.out.println("Please enter valid input..");
@@ -133,5 +135,6 @@ public class MainClass {
 				}
 			}
 		} while (input==1);
+		System.out.println("Thank you!");
 	}
 }
