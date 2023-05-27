@@ -12,7 +12,7 @@ import com.jdbc.util.DBUtil;
 public class StudentDbOperations {
 	Connection con = null;
 	PreparedStatement pstmt = null;
-
+	//Method to register the student
 	public void registerStudent() {
 		int i = 0;
 		try {

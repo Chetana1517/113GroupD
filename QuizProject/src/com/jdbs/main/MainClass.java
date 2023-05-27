@@ -1,9 +1,12 @@
 package com.jdbs.main;
 
 import java.util.Scanner;
-import com.jdbc.studentoperations.DatabaseOperation;
-import com.jdbc.adminOperations.InsertQuestion;
+
+import com.jdbc.adminOperations.AdminDbOperations;
+import com.jdbc.studentoperations.StudentDbOperations;
+
 public class MainClass {
+	//main method
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int input;
@@ -20,15 +23,16 @@ public class MainClass {
 			switch (choice) {
 			case 1:
 					do {
-						Menu.displayStudentMenu();
+						StudentDbOperations studOp=new StudentDbOperations();
+						
+						Menu.displayStudentMenu(); //To display student menu
 						System.out.println("Enter your choice:");
 						choiceOfStudent=sc.nextInt();
 					
 						switch(choiceOfStudent) {
 						case 1:
 							System.out.println("Welcome to Student Registration");
-							DatabaseOperation operation=new DatabaseOperation();
-							operation.registerStudent();
+							studOp.registerStudent();
 							break;
 						case 2:
 							System.out.println("Welcome toStudent Login");
@@ -64,24 +68,28 @@ public class MainClass {
 					
 				case 2:
 					do {
-						Menu.displayAdminMenu();
+						AdminDbOperations adminOp=new AdminDbOperations();
+						
+						Menu.displayAdminMenu();// To display Admin menu
 						System.out.println("Please enter your choice:");
 						choiceOfAdmin=sc.nextInt();
 					
 						switch(choiceOfAdmin) {
 							case 1:
 								System.out.println("Add Questions");
-								InsertQuestion insertQ=new InsertQuestion();
-								insertQ.addQuestion();
+								adminOp.addQuestion();
 								break;
 							case 2:
-								System.out.println("2.Update Questions");
+								System.out.println("Update Questions");
+								adminOp.updateQuestion();
 								break;
 							case 3:
-								System.out.println("3.Delete Questions");
+								System.out.println("Delete Questions");
+								adminOp.deleteQuestion();
 								break;
 							case 4:
-								System.out.println("4.Display all Questions");
+								System.out.println("Display all Questions");
+								adminOp.displayQuestion();
 								break;
 							case 5:
 								System.out.println("Result of all students");
