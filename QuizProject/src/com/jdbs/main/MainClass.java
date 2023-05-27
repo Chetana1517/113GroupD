@@ -36,6 +36,7 @@ public class MainClass {
 							break;
 						case 2:
 							System.out.println("Welcome toStudent Login");
+							studOp.studentLogin();
 							break;
 						case 3:
 							System.out.println("Quiz is Started");
