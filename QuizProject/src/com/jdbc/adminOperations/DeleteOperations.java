@@ -20,7 +20,7 @@ public class DeleteOperations {
 			int noOfRecords=sc.nextInt();
 			if(noOfRecords>0) {
 				for(int j=0;j<noOfRecords;j++) {
-					pstmt.setInt(1, 2);
+					pstmt.setInt(1, 1);
 					i=pstmt.executeUpdate();
 			
 				}

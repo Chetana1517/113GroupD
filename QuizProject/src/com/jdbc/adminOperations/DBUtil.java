@@ -9,7 +9,7 @@ public class DBUtil {
 		Connection con = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			String url="jdbc:mysql://localhost:3306/quize?characterEncoding=utf8";
+			String url="jdbc:mysql://localhost:3306/QuizGame?characterEncoding=utf8";
 			con=DriverManager.getConnection(url, "root", "Harana21@");
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();

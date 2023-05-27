@@ -8,9 +8,9 @@ import java.sql.SQLException;
 
 
 public class ReadRecords {
-	public static void main(String[] args) {
+	public void readRecord() {
 		Connection con=DBUtil.getCon();
-		String query="select * from Question where QueId between ? and ?";
+		String query="select * from Question where QueId between 2 and 5";
 		PreparedStatement pst=null;
 		ResultSet rs=null;
 		try {
@@ -26,7 +26,6 @@ public class ReadRecords {
 				System.out.println("C>>"+rs.getString(5));
 				System.out.println("D>>"+rs.getString(6));
 				System.out.println("CorrectAnswer>>"+rs.getString(7));
-				System.out.println("Marks>>"+rs.getInt(8));
 				System.out.println();
 			}
 			
@@ -47,5 +46,4 @@ public class ReadRecords {
 			}
 		}
 	}
-
 }

@@ -13,7 +13,7 @@ public class UpdateOperations {
 		int i = 0;
 		try {
 			con = DBUtil.getCon();
-			String query = "update Question set Marks=?, QuestionDescription=? where QueId=?";
+			String query = "update Question set QuestionDescription=? where QueId=?";
 			pstmt = con.prepareStatement(query);
 			Scanner sc=new Scanner(System.in);
 			System.out.println("Enter the count of records to you want to update:");
@@ -23,9 +23,6 @@ public class UpdateOperations {
 					
 					pstmt.setInt(1, 0);
 					pstmt.setInt(2, 1);
-					pstmt.setInt(3, 2);
-
-						
 					i=pstmt.executeUpdate();
 				}
 				System.out.println(i+" record updated sucessfully...");
