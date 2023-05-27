@@ -1,24 +1,23 @@
-package com.jdbc.operations;
+package com.jdbc.studentoperations;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
 
 import com.jdbc.studentclass.Student;
 import com.jdbc.util.DBUtil;
 
-public class DatabaseOperation {
-	//student registration form
-	//Student databse 
+public class StudentDbOperations {
+	Connection con = null;
+	PreparedStatement pstmt = null;
+	//Method to register the student
 	public void registerStudent() {
-		Connection con = null;
-		PreparedStatement pstmt = null;
-
 		int i = 0;
 		try {
 			con = DBUtil.getCon();
-			String query = "insert into student(fname,lname,username,password,emailId,mobileNo)values(?,?,?,?,?,?)";
+			String query = "insert into student(fname,lname,username,passwd,emailId,mobileNo)values(?,?,?,?,?,?)";
 			pstmt = con.prepareStatement(query);
 			Scanner sc = new Scanner(System.in);
 
@@ -63,6 +62,26 @@ public class DatabaseOperation {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+	}
+
+	// Methos to start the quiz....
+	public void startQuiz() {
+
+		try {
+			con = DBUtil.getCon();
+			// query to fetch questions from database.
+			String query = "select QuestionDescription,A,B,C,D from question;";
+			pstmt = con.prepareStatement(query);
+
+			ResultSet result = pstmt.executeQuery();
+
+			while (result.next()) {
+				System.out.println("1)" + result.getString(1));
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 }

@@ -2,12 +2,15 @@ package com.jdbs.main;
 
 import java.util.Scanner;
 
-import com.jdbc.operations.DatabaseOperation;
+import com.jdbc.adminOperations.AdminDbOperations;
+import com.jdbc.studentoperations.StudentDbOperations;
 
 public class MainClass {
+	//main method
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int input;
+		int cont;
 		int choice;
 		int choiceOfStudent;
 		int choiceOfAdmin;
@@ -20,15 +23,16 @@ public class MainClass {
 			switch (choice) {
 			case 1:
 					do {
-						Menu.displayStudentMenu();
+						StudentDbOperations studOp=new StudentDbOperations();
+						
+						Menu.displayStudentMenu(); //To display student menu
 						System.out.println("Enter your choice:");
 						choiceOfStudent=sc.nextInt();
 					
 						switch(choiceOfStudent) {
 						case 1:
 							System.out.println("Welcome to Student Registration");
-							DatabaseOperation operation=new DatabaseOperation();
-							operation.registerStudent();
+							studOp.registerStudent();
 							break;
 						case 2:
 							System.out.println("Welcome toStudent Login");
@@ -64,22 +68,28 @@ public class MainClass {
 					
 				case 2:
 					do {
-						Menu.displayAdminMenu();
+						AdminDbOperations adminOp=new AdminDbOperations();
+						
+						Menu.displayAdminMenu();// To display Admin menu
 						System.out.println("Please enter your choice:");
 						choiceOfAdmin=sc.nextInt();
 					
 						switch(choiceOfAdmin) {
 							case 1:
-								System.out.println("1.Add Questions");
+								System.out.println("Add Questions");
+								adminOp.addQuestion();
 								break;
 							case 2:
-								System.out.println("2.Update Questions");
+								System.out.println("Update Questions");
+								adminOp.updateQuestion();
 								break;
 							case 3:
-								System.out.println("3.Delete Questions");
+								System.out.println("Delete Questions");
+								adminOp.deleteQuestion();
 								break;
 							case 4:
-								System.out.println("4.Display all Questions");
+								System.out.println("Display all Questions");
+								adminOp.displayQuestion();
 								break;
 							case 5:
 								System.out.println("Result of all students");
@@ -94,22 +104,22 @@ public class MainClass {
 						}
 						//--------------------------------------------
 						System.out.println("Do you want to continue?(1->continue/0->stop):");
-						input = sc.nextInt();
-						if (input == 0) {
+						cont = sc.nextInt();
+						if (cont == 0) {
 							break;
 						} 
-						else if (input > 1) {
+						else if (cont > 1) {
 							System.out.println("Invalid input");
 
-							while (input!=1) {
+							while (cont!=1) {
 								System.out.println("Please Enter 1 to continue or 0 to stop:");
 								input = sc.nextInt();
-								if (input == 0) {
+								if (cont == 0) {
 									break;
 								}
 							}
 						}
-					}while(input==1);
+					}while(cont==1);
 					break;
 			default:
 					System.out.println("Please enter valid input..");
@@ -133,5 +143,6 @@ public class MainClass {
 				}
 			}
 		} while (input==1);
+		System.out.println("Thank you!");
 	}
 }

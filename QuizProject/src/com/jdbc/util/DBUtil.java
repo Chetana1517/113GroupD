@@ -12,7 +12,7 @@ public class DBUtil {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// establish the connection
-			String url = "jdbc:mysql://localhost:3306/javaquiz";
+			String url = "jdbc:mysql://localhost:3306/quizgame";
 			con = DriverManager.getConnection(url, "root", "Mysql@root15");
 
 		} catch (ClassNotFoundException | SQLException e) {
