@@ -1,7 +1,7 @@
 package com.jdbc.studentclass;
 
 public class Student {
-	//private int id;
+	private int sid;
 	private String fname;
 	private String lname;
 	private String username;
@@ -17,7 +17,8 @@ public class Student {
 		this.password=password;
 	}
 	
-	public Student(String fname,String lname,String username,String password,String emailId,Long mobileNo){
+	public Student(int sid,String fname,String lname,String username,String password,String emailId,Long mobileNo){
+		this.sid=sid;
 		this.fname=fname;
 		this.lname=lname;
 		this.username=username;
@@ -26,6 +27,12 @@ public class Student {
 		this.mobileNo=mobileNo;
 	}
 	
+	public int getSid() {
+		return sid;
+	}
+	public void setSid(int sid) {
+		this.sid = sid;
+	}
 	public String getFname() {
 		return fname;
 	}

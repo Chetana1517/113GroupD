@@ -14,6 +14,7 @@ public class MainClass {
 		int choice;
 		int choiceOfStudent;
 		int choiceOfAdmin;
+		 int id = 0;
 		do {
 			System.out.println("*****Welcome to Java Quiz*****");
 			System.out.println("1.Student");
@@ -36,10 +37,11 @@ public class MainClass {
 							break;
 						case 2:
 							System.out.println("Welcome toStudent Login");
-							studOp.studentLogin();
+						    id=studOp.studentLogin();
 							break;
 						case 3:
 							System.out.println("Quiz is Started");
+							studOp.startQuiz(id);
 							break;
 						case 4:
 							System.out.println("Quiz result");
