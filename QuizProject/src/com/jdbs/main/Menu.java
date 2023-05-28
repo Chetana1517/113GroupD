@@ -11,10 +11,8 @@ public class Menu {
 	public static void displayAdminMenu() {
 		System.out.println("***Welcome to Admin Login***");
 		System.out.println("1.Add Questions");
-		System.out.println("2.Update Questions");
-		System.out.println("3.Delete Questions");
-		System.out.println("4.Display all Questions");
-		System.out.println("5.Result of all students");
-		System.out.println("6.Check score of student");
+		System.out.println("2.Display all Questions");
+		System.out.println("3.Result of all students");
+		System.out.println("4.Check score of student");
 	}
 }

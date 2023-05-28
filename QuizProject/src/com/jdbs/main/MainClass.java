@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 import com.jdbc.adminOperations.AdminDbOperations;
 import com.jdbc.studentoperations.StudentDbOperations;
+import com.jdbc.studentoperations.StudentResult;
 
 public class MainClass {
 	//main method
+	static int id;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int input;
@@ -14,7 +16,7 @@ public class MainClass {
 		int choice;
 		int choiceOfStudent;
 		int choiceOfAdmin;
-		 int id = 0;
+		
 		do {
 			System.out.println("*****Welcome to Java Quiz*****");
 			System.out.println("1.Student");
@@ -45,6 +47,8 @@ public class MainClass {
 							break;
 						case 4:
 							System.out.println("Quiz result");
+							StudentResult sresult=new StudentResult();
+							sresult.getStudentResult(id);
 							break;
 						default:
 							System.out.println("Enter the valid input...");
@@ -82,26 +86,19 @@ public class MainClass {
 								System.out.println("Add Questions");
 								adminOp.addQuestion();
 								break;
+							
 							case 2:
-								System.out.println("Update Questions");
-								adminOp.updateQuestion();
-								break;
-							case 3:
-								System.out.println("Delete Questions");
-								adminOp.deleteQuestion();
-								break;
-							case 4:
 								System.out.println("Display all Questions");
 								adminOp.displayQuestion();
 								break;
-							case 5:
+							case 3:
 								System.out.println("Result of all students");
+								adminOp.displayAllRecord();
 								break;
-							case 6:
-								System.out.println("Check score of student");
+							case 4:
+								System.out.println("Check score of particular student");
+								adminOp.displayResult();
 								break;
-							case 7:
-								System.out.println("exit");
 							default:
 								System.out.println("Enter the valid input...");
 						}
