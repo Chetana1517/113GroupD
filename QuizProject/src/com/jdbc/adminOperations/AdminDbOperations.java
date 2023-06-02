@@ -4,18 +4,25 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import com.jdbc.util.DBUtil;
 
 public class AdminDbOperations {
-	// Method to add questions in question table of quizgame database.
+	 // Method to add questions in question table of quizgame database. 
+	Connection con=null;
+	//instance block to establish the connection
+    {
+		 con = DBUtil.getCon();
+	}
 	public void addQuestion() {
-		Connection con = null;
+		//Connection con = null;
 		PreparedStatement pst = null;
 		Scanner sc = null;
 		try {
-			con = DBUtil.getCon();
+			//con = DBUtil.getCon();
 			System.out.println("*****This is Admin*****");
 			String query = "insert into Question(QuestionDescription,A,B,C,D,CorrectAnswer) values (?,?,?,?,?,?)";
 			pst = con.prepareStatement(query);
@@ -73,15 +80,16 @@ public class AdminDbOperations {
 	// Method to read all records of questions from question table of quizgame
 	// database.
 	public void displayQuestion() {
-		Connection con = DBUtil.getCon();
-		String query = "select * from Question where QueId between 2 and 5";
+		//Connection con = DBUtil.getCon();
+		String query = "select * from Question;";
 		PreparedStatement pst = null;
 		ResultSet rs = null;
 		try {
 			pst = con.prepareStatement(query);
 
 			rs = pst.executeQuery();
-			System.out.println("Quize Records>>");
+			
+			System.out.println("*****Question List*****");
 			while (rs.next()) {
 				System.out.println("QueId>>" + rs.getInt(1));
 				System.out.println("QuestionDescription>>" + rs.getString(2));
@@ -117,7 +125,7 @@ public class AdminDbOperations {
 		
 		try {
 			Scanner sc=new Scanner(System.in);
-			Connection con=DBUtil.getCon();
+			//Connection con=DBUtil.getCon();
 			String getQuery="select * from result where sId=?";
 			pst=con.prepareStatement(getQuery);
 			
@@ -132,7 +140,7 @@ public class AdminDbOperations {
 				System.out.print(rs.getInt(1)+"\t");
 				System.out.print(rs.getString(2)+"\t");
 				System.out.print("\t"+rs.getString(3)+"\t");
-				System.out.print(rs.getInt(4)+"\t");
+				System.out.print("\t"+rs.getInt(4)+"\t");
 				System.out.println("\t"+rs.getString(5)+"\t");
 			}
 			
@@ -150,7 +158,7 @@ public class AdminDbOperations {
 		try {
 			Scanner sc=new Scanner(System.in);
 			Connection con=DBUtil.getCon();
-			String getQuery="select * from result;";
+			String getQuery="select * from result order by totalMarks;";
 			pst=con.prepareStatement(getQuery);
 				
 			ResultSet rs=pst.executeQuery();
@@ -159,8 +167,8 @@ public class AdminDbOperations {
 			while(rs.next()) {
 				System.out.print(rs.getInt(1)+"\t");
 				System.out.print(rs.getString(2)+"\t");
-				System.out.print("\t"+rs.getString(3)+"\t");
-				System.out.print(rs.getInt(4)+"\t");
+				System.out.print("\t"+rs.getString(3));
+				System.out.print("\t"+rs.getInt(4)+"\t");
 				System.out.println("\t"+rs.getString(5)+"\t");
 			}
 			

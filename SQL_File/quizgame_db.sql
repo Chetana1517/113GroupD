@@ -36,6 +36,7 @@ CREATE TABLE `answer` (
 
 LOCK TABLES `answer` WRITE;
 /*!40000 ALTER TABLE `answer` DISABLE KEYS */;
+INSERT INTO `answer` VALUES (1,2,'C',1),(1,9,'A',0),(1,3,'C',0),(1,6,'A',0),(1,5,'B',1),(1,1,'A',1),(1,8,'B',1),(1,10,'C',0),(1,7,'A',0),(1,4,'C',0);
 /*!40000 ALTER TABLE `answer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -90,7 +91,7 @@ CREATE TABLE `result` (
 
 LOCK TABLES `result` WRITE;
 /*!40000 ALTER TABLE `result` DISABLE KEYS */;
-INSERT INTO `result` VALUES (1,'Chetana','Chaudhari',8,'A'),(2,'Yuvraj','Patil',8,'A'),(3,'Divyata','Rathivadekar',8,'A'),(4,'Neha','Joshi',8,'A');
+INSERT INTO `result` VALUES (1,'Chetana','Chaudhari',4,'C');
 /*!40000 ALTER TABLE `result` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +111,7 @@ CREATE TABLE `student` (
   `emailId` varchar(255) DEFAULT NULL,
   `mobileNo` mediumtext,
   PRIMARY KEY (`sid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +120,7 @@ CREATE TABLE `student` (
 
 LOCK TABLES `student` WRITE;
 /*!40000 ALTER TABLE `student` DISABLE KEYS */;
-INSERT INTO `student` VALUES (1,'Chetana','Chaudhari','chetana','chetana123','chetana@gmail.com','8412099336'),(2,'Yuvraj','Patil','yuvraj','yuvraj123','yuvraj@gmail.com','9822321607'),(3,'Divyata','Rathivadekar','divyata','divyata123','divyata@gmail.com','9423311147'),(4,'Neha','Joshi','neha','neha123','neha@gmail.com','7845126323');
+INSERT INTO `student` VALUES (1,'Chetana','Chaudhari','chetana','chetana123','chetana@gmail.com','8412099336');
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -132,4 +133,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-28 15:59:27
+-- Dump completed on 2023-06-02  9:21:10

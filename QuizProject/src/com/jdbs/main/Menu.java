@@ -9,7 +9,7 @@ public class Menu {
 		System.out.println("4.Quiz Result");
 	}
 	public static void displayAdminMenu() {
-		System.out.println("***Welcome to Admin Login***");
+		System.out.println("***Welcome to Admin Login***");       
 		System.out.println("1.Add Questions");
 		System.out.println("2.Display all Questions");
 		System.out.println("3.Result of all students");

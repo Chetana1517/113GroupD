@@ -7,12 +7,10 @@ import com.jdbc.studentoperations.StudentDbOperations;
 import com.jdbc.studentoperations.StudentResult;
 
 public class MainClass {
-	//main method
 	static int id;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int input;
-		int cont;
+		int input,in;
 		int choice;
 		int choiceOfStudent;
 		int choiceOfAdmin;
@@ -28,25 +26,25 @@ public class MainClass {
 					do {
 						StudentDbOperations studOp=new StudentDbOperations();
 						
-						Menu.displayStudentMenu(); //To display student menu
+						Menu.displayStudentMenu(); //To display Student menu.
 						System.out.println("Enter your choice:");
 						choiceOfStudent=sc.nextInt();
 					
 						switch(choiceOfStudent) {
 						case 1:
 							System.out.println("Welcome to Student Registration");
-							studOp.registerStudent();
+							studOp.registerStudent();//Method call for student registration.
 							break;
 						case 2:
-							System.out.println("Welcome toStudent Login");
-						    id=studOp.studentLogin();
+							System.out.println("Welcome to Student Login");
+						    id=studOp.studentLogin();//Method call for student login.
 							break;
 						case 3:
-							System.out.println("Quiz is Started");
+							//method call to start the quiz.
 							studOp.startQuiz(id);
 							break;
 						case 4:
-							System.out.println("Quiz result");
+							//method call to show the result to the student.
 							StudentResult sresult=new StudentResult();
 							sresult.getStudentResult(id);
 							break;
@@ -56,21 +54,8 @@ public class MainClass {
 						//------------------------------------------------------
 						System.out.println("Do you want to continue?(1->continue/0->stop):");
 						input = sc.nextInt();
-						if (input == 0) {
-							break;
-						} 
-						else if (input > 1) {
-							System.out.println("Invalid input");
-
-							while (input!=1) {
-								System.out.println("Please Enter 1 to continue or 0 to stop:");
-								input = sc.nextInt();
-								if (input == 0) {
-									break;
-								}
-							}
-						}
-					}while(input==1);
+						in=continueOrNot(input);//method call for continue or stop.
+					}while(in==1);
 					break;
 					
 				case 2:
@@ -84,65 +69,58 @@ public class MainClass {
 						switch(choiceOfAdmin) {
 							case 1:
 								System.out.println("Add Questions");
-								adminOp.addQuestion();
+								adminOp.addQuestion();//Method call to add questions to db.
 								break;
 							
 							case 2:
 								System.out.println("Display all Questions");
-								adminOp.displayQuestion();
+								adminOp.displayQuestion();//To display questions from db.
 								break;
 							case 3:
 								System.out.println("Result of all students");
-								adminOp.displayAllRecord();
+								adminOp.displayAllRecord();//TO display all records in ascending order.
 								break;
 							case 4:
 								System.out.println("Check score of particular student");
-								adminOp.displayResult();
+								adminOp.displayResult();//To display result of particular student.
 								break;
 							default:
 								System.out.println("Enter the valid input...");
 						}
 						//--------------------------------------------
 						System.out.println("Do you want to continue?(1->continue/0->stop):");
-						cont = sc.nextInt();
-						if (cont == 0) {
-							break;
-						} 
-						else if (cont > 1) {
-							System.out.println("Invalid input");
-
-							while (cont!=1) {
-								System.out.println("Please Enter 1 to continue or 0 to stop:");
-								input = sc.nextInt();
-								if (cont == 0) {
-									break;
-								}
-							}
-						}
-					}while(cont==1);
+						input = sc.nextInt();
+						in=continueOrNot(input);//method call for continue or stop.
+					}while(in==1);
 					break;
 			default:
 					System.out.println("Please enter valid input..");
 			}
-			
 			//-------------------------------------------------------------
 			System.out.println("Do you want Student Login or Admin Login again?\n(1->continue/0->stop):");
 			input = sc.nextInt();
-			if (input == 0) {
-				break;
-			} 
-			else if (input > 1) {
-				System.out.println("Invalid input");
+			in=continueOrNot(input);//method call for continue or stop.
+		} while (in==1);
+		System.out.println("Thank you!");
+	}
+	
+	
+	public static int continueOrNot(int input){
+		Scanner sc=new Scanner(System.in);
+		if (input == 0) {
+			return input;
+		} 
+		else if (input > 1) {
+			System.out.println("Invalid input");
 
-				while (input!=1) {
-					System.out.println("Please Enter 1 to continue or 0 to stop:");
-					input = sc.nextInt();
-					if (input == 0) {
-						break;
-					}
+			while (input!=1) {
+				System.out.println("Please Enter 1 to continue or 0 to stop:");
+				input = sc.nextInt();
+				if (input == 0) {
+					break;
 				}
 			}
-		} while (input==1);
-		System.out.println("Thank you!");
+		}
+		return input;
 	}
 }

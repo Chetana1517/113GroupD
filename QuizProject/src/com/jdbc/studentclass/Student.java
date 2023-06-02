@@ -1,7 +1,7 @@
 package com.jdbc.studentclass;
 
 public class Student {
-	
+	//private int id;
 	private String fname;
 	private String lname;
 	private String username;
@@ -9,7 +9,7 @@ public class Student {
 	private String emailId;
 	private Long mobileNo;
 	
-	Student(){
+	public Student(){
 	
 	}
 	public Student (String username,String password) {
